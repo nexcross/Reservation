@@ -5,8 +5,8 @@
 		$password = $_SESSION['pass'];
 		require_once 'connect.php';
 		$sql = "SELECT * FROM `user` WHERE account_id='$username' and password='$password'";
-		$result = mysql_query($sql) or die(mysql_error());
-		$count = mysql_num_rows($result);
+		$result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
+		$count = mysqli_num_rows($result);
 		require_once 'close.php';
 		if ($count == 1){
 			echo "You are logged in";
@@ -38,20 +38,20 @@ echo "</table>";
 
 		if($username != null && $password !=null){
 			require_once 'connect.php';
-			$res = mysql_query("CALL isUserExist('$username')");
+			$res = mysqli_query($connection, "CALL isUserExist('$username')");
 			if (!$res) {
-				echo "CALL failed: " . mysql_error();
+				echo "CALL failed: " . mysqli_error($connection);
 			}
 			else{
-				$row = mysql_fetch_assoc($res);
+				$row = mysqli_fetch_assoc($res);
 				if($row['doesexist']){
 					echo "account already exist";
 				}
 				else{
 					require_once 'close.php';
 					require_once 'connect.php';
-					if (!mysql_query("CALL addUser('$username' ,'$password', '$email')")){
-						echo "CALL failed: " .  mysql_error();
+					if (!mysqli_query($connection, "CALL addUser('$username' ,'$password', '$email')")){
+						echo "CALL failed: " .  mysqli_error($connection);
 					}
 					else{
 						echo "You are logged in";

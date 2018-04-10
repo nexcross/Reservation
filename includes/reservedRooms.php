@@ -2,8 +2,8 @@
       //Reserved Rooms
       //$thisUser = $_GET['username'];
 
-      if(!($queryResult = mysql_query("SELECT room.room_no, room_type, room_charge, odate FROM room LEFT JOIN reservation on room.room_no = reservation.room_no WHERE reservation.room_no = room.room_no"))){
-        echo "CALL failed: " .  mysql_error();
+      if(!($queryResult = mysqli_query($connection, "SELECT room.room_no, room_type, room_charge, odate FROM room LEFT JOIN reservation on room.room_no = reservation.room_no WHERE reservation.room_no = room.room_no"))){
+        echo "CALL failed: " .  mysqli_error();
       }
       else{
         echo "<table id='keywords' cellspacing='0' cellpadding='0'>
@@ -15,13 +15,13 @@
             <th><span>Date</span></th>
           </tr>";
 
-        $num=mysql_num_rows($queryResult);
+        $num=mysqli_num_rows($queryResult);
         if(0==$num){
           echo "<span style='color:red;'>No records found.</span>";
           exit;
         }
         else{
-          while($row = mysql_fetch_assoc($queryResult)) {
+          while($row = mysqli_fetch_assoc($queryResult)) {
             echo "<tbody>
                 <tr>";
             echo "<td>".$row['room_no']."</td>";

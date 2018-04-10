@@ -5,8 +5,8 @@
         $password = $_SESSION['pass'];
         require_once 'connect.php';
         $sql = "SELECT * FROM `user` WHERE account_id='$username' and password='$password'";
-        $result = mysql_query($sql) or die(mysql_error());
-        $count = mysql_num_rows($result);
+        $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
+        $count = mysqli_num_rows($result);
         require_once 'close.php';
         if ($count == 1){
           echo "You are logged in";
@@ -21,8 +21,8 @@
 		  $password = $_POST['password'];
 
 		  $sql = "SELECT * FROM `user` WHERE account_id='$username' and password='$password'";
-		  $result = mysql_query($sql) or die(mysql_error());
-		  $count = mysql_num_rows($result);
+		  $result = mysqli_query($connection, $sql) or die(mysql_error($connection));
+		  $count = mysqli_num_rows($result);
 		  require_once 'close.php';
 		  if ($count == 1){
 			echo "You are logged in";

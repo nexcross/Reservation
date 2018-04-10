@@ -1,12 +1,12 @@
 <?php
-$connection = mysql_connect('192.168.178.164', 'root', '');
+$connection = mysqli_connect('localhost:3308', 'root', '');
 if (!$connection){
-    die("Database Connection Failed" . mysql_error());
+    die("Database Connection Failed" . mysqli_connect_error());
 }
 if(!isset($select_db)){
-	$select_db = mysql_select_db('reservation', $connection);
+	$select_db = mysqli_select_db($connection, 'reservation');
 }
 if (!$select_db){
-    die("Database Selection Failed" . mysql_error());
+    die("Database Selection Failed" . mysqli_connect_error());
 }
 ?>

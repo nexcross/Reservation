@@ -1,8 +1,8 @@
  <?php
     //Available Rooms
    //$thisUser = $_GET['username'];
-    if(!($queryResult = mysql_query("SELECT room.room_no, room_type, room_charge FROM room LEFT JOIN reservation on room.room_no = reservation.room_no WHERE reservation.room_no IS NULL"))){
-      echo "CALL failed: " .  mysql_error() . $connection;
+    if(!($queryResult = mysqli_query($connection, "SELECT room.room_no, room_type, room_charge FROM room LEFT JOIN reservation on room.room_no = reservation.room_no WHERE reservation.room_no IS NULL"))){
+      echo "CALL failed: " .  mysqli_error($connection) . $connection;
     }
     else{
          echo "<center><input type='date' name='cdate' id='cdate'/></center><br/>";

@@ -127,21 +127,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`account_id`, `password`, `name`) VALUES
-('256256', '89598589', '6+569+6+96'),
-('aaaaa', 'aa', 'a'),
-('aaaaaaa', 'sdasd', 'asdasd'),
-('aaas', 'sssad', 'asaa'),
-('asdasd', '12345', 'sadasd'),
-('asdasds', 'sssad', 'asaa'),
-('clyde', '12345', 'clyde'),
-('desu', 'desu', 'desu'),
-('eden', 'eden', 'eden'),
-('exiarliade', '1234', 'sssaaaad'),
-('king', '12345', 'king'),
-('kingusan', 'asadsa', 'asdasd'),
-('qweqwe', '12345', 'qweqweqwe'),
-('qwerty', '1234', 'qwer'),
-('Stardust', '123qwe', 'Rene Paulo');
+('cruz', 'cruz', 'cruz');
 
 -- --------------------------------------------------------
 

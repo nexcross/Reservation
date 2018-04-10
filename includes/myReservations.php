@@ -2,8 +2,8 @@
       //My Reservation
       $thisUser = $_SESSION['uid'];
 
-      if(!($queryResult = mysql_query("SELECT room.room_no, room_type, room_charge, odate FROM room JOIN reservation on room.room_no = reservation.room_no WHERE reservation.user = '$thisUser'"))){
-        echo "CALL failed: " .  mysql_error();
+      if(!($queryResult = mysqli_query($connection, "SELECT room.room_no, room_type, room_charge, odate FROM room JOIN reservation on room.room_no = reservation.room_no WHERE reservation.user = '$thisUser'"))){
+        echo "CALL failed: " .  mysqli_error($connection);
       }
       else{
         echo "<table id='keywords' cellspacing='0' cellpadding='0' style='font-size: 14pt;'>
@@ -16,13 +16,13 @@
             <th><span></span></th>
           </tr>";
 
-        $num=mysql_num_rows($queryResult);
+        $num=mysqli_num_rows($queryResult);
         if(0==$num){
           echo "No record";
           exit;
         }
         else{
-          while($row = mysql_fetch_assoc($queryResult)) {
+          while($row = mysqli_fetch_assoc($queryResult)) {
             echo "<tbody>
                   <tr>";
             echo "<td>".$row['room_no']."</td>";
